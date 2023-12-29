@@ -209,8 +209,8 @@
         num_layer {
             label = "NUM";
             bindings = <
-                &kp ESC    &kp ENTER  &kp UP         &kp DEL        &kp BSPC       &kp DE_COLN      &kp DE_7      &kp DE_8        &kp DE_9    &kp DE_UNDS 
-                &kp HOME   &kp LEFT   &kp DOWN       &kp RIGHT      &kp END        &kp DE_0         &kp DE_4      &kp DE_5        &kp DE_6    &kp DE_MINS 
+                &kp ESC    &kp ENTER  &kp UP         &kp DEL        &kp BSPC       &kp DE_X         &kp DE_7      &kp DE_8        &kp DE_9    &kp DE_UNDS 
+                &kp HOME   &kp LEFT   &kp DOWN       &kp RIGHT      &kp END        &kp DE_0         &kp DE_4      &kp DE_5        &kp DE_6    &kp DE_SS 
                 &kp UNDO   &kp TAB    &kp INS        &kp PGUP       &kp PGDN       &kp DE_DOT       &kp DE_1      &kp DE_2        &kp DE_3    &kp DE_COMM
                                                      _______        XXXXXXX        _______          _______
             >;
