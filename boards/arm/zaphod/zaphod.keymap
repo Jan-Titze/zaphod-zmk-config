@@ -18,10 +18,11 @@
 // Defines for layers
 #define BASE_L  0 //_BASE,
 #define NUM_L   1 //_NUMBERS,
-#define SNUM_L  2 //_SNUMBERS
+#define NAV_L   2 //_NAVIGATION
 #define XCV_L   3 //_XCV
-#define SYM_L   4 //_SYMBOLS
-#define ADJ_L   5 //_ADJUST
+#define SYML_L  4 //_SYMBOLS Lefthand
+#define SYMR_L  5 //_SYMBOLS Righthand
+#define ADJ_L   6 //_ADJUST
 
 // Defines for keypositions to enhance readability of combos
 #define INDEX_L     13
@@ -59,91 +60,6 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_lctrl {
-	    timeout-ms = <50>;
-            key-positions = <MIDDLE_L INDEX_L>;
-            bindings = <&sk LCTRL>;
-        };
-
-        combo_lalt {
-	    timeout-ms = <50>;
-            key-positions = <RING_L INDEX_L>;
-            bindings = <&sk LALT>;
-        };
-
-        combo_lgui {
-	    timeout-ms = <50>;
-            key-positions = <PINKY_L INDEX_L>;
-            bindings = <&sk LGUI>;
-        };
-	
-        combo_lctrlalt {
-	    timeout-ms = <50>;
-            key-positions = <RING_L MIDDLE_L INDEX_L>;
-            bindings = <&sk LA(LCTRL)>;
-        };
-	
-        combo_lctrlgui {
-	    timeout-ms = <50>;
-            key-positions = <PINKY_L MIDDLE_L INDEX_L>;
-            bindings = <&sk LG(LCTRL)>;
-        };
-	
-        combo_laltgui {
-	    timeout-ms = <50>;
-            key-positions = <PINKY_L RING_L INDEX_L>;
-            bindings = <&sk LG(LALT)>;
-        };
-	
-        combo_lctrlaltgui {
-	    timeout-ms = <50>;
-            key-positions = <PINKY_L RING_L INDEX_L>;
-            bindings = <&sk LA(LG(LCTRL))>;
-        };
-
-        combo_rctrl {
-	    timeout-ms = <50>;
-            key-positions = <MIDDLE_R INDEX_R>;
-            bindings = <&sk LCTRL>;
-        };
-
-        combo_ralt {
-	    timeout-ms = <50>;
-            key-positions = <RING_R INDEX_R>;
-            bindings = <&sk LALT>;
-        };
-
-        combo_rgui {
-	    timeout-ms = <50>;
-            key-positions = <PINKY_R INDEX_R>;
-            bindings = <&sk LGUI>;
-        };
-	
-        combo_rctrlalt {
-	    timeout-ms = <50>;
-            key-positions = <RING_R MIDDLE_R INDEX_R>;
-            bindings = <&sk LA(LCTRL)>;
-        };
-	
-        combo_rctrlgui {
-	    timeout-ms = <50>;
-            key-positions = <PINKY_R MIDDLE_R INDEX_R>;
-            bindings = <&sk LG(LCTRL)>;
-        };
-	
-        combo_raltgui {
-	    timeout-ms = <50>;
-            key-positions = <PINKY_R RING_R INDEX_R>;
-            bindings = <&sk LG(LALT)>;
-        };
-	
-        combo_rctrlaltgui {
-	    timeout-ms = <50>;
-            key-positions = <PINKY_R RING_R INDEX_R>;
-            bindings = <&sk LA(LG(LCTRL))>;
-        };
-
-
         combo_number_lock {
 	    timeout-ms = <50>;
             key-positions = <THUMB_4 INDEX_R>;
@@ -155,42 +71,6 @@
             key-positions = <THUMB_4 MIDDLE_R>;
             bindings = <&sl ADJ_L>;
         };
-
-        combo_ss {
-	    timeout-ms = <50>;
-            key-positions = <9 19>;
-            bindings = <&kp DE_SS>;
-        };
-
-        combq_ae {
-	    timeout-ms = <50>;
-            key-positions = <3 13>;
-            bindings = <&kp DE_ADIA>;
-        };
-
-        combq_oe {
-	    timeout-ms = <50>;
-            key-positions = <4 14>;
-            bindings = <&kp DE_ODIA>;
-        };
-
-        combq_ue {
-	    timeout-ms = <50>;
-            key-positions = <1 11>;
-            bindings = <&kp DE_UDIA>;
-        };
-    };
-
-    behaviors {
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "homerow mods";
-            #binding-cells = <2>;
-            tapping_term_ms = <200>;
-	    quick-tap-ms = <100>;
-	    flavor = "balanced";
-            bindings = <&kp>, <&kp>;
-        };
     };
 
     keymap {
@@ -199,33 +79,32 @@
         default_layer {
             label = "BASE";
             bindings = <
-                &kp DE_B        &kp DE_U   &kp DE_DOT     &kp DE_COMM    &kp DE_UDIA    &kp DE_P         &kp DE_C       &kp DE_L       &kp DE_M   &kp DE_F
-                &kp DE_H        &kp DE_I   &lt SYM_L DE_E &kp DE_A       &kp DE_O       &kp DE_D         &kp DE_T       &lt SYM_L DE_R &kp DE_N   &kp DE_S
-                &lt XCV_L DE_K  &kp DE_Y   &kp DE_ODIA    &kp DE_ADIA    &kp DE_Q       &kp DE_J         &kp DE_G       &kp DE_W       &kp DE_V   &kp DE_Z
-                                                          &kp LSHIFT     &kp SPC        &kp ENTER        &mo NUM_L
+                &kp DE_B        &kp DE_U        &lt SYM_L DE_DOT    &kp DE_COMM      &kp DE_UDIA    &kp DE_P         &kp DE_C       &lt SYM_L DE_L &kp DE_M       &kp DE_F
+                &mt LGUI  DE_H  &mt LALT DE_I   &mt LSHFT DE_E      &mt LCTRL DE_A   &kp DE_O       &kp DE_D         &mt LCTRL DE_T &mt LSHFT DE_R &mt LALT DE_N  &mt LGUI DE_S
+                &lt XCV_L DE_K  &kp DE_B        &kp DE_ODIA         &kp DE_ADIA      &kp DE_Q       &kp DE_J         &kp DE_G       &kp DE_W       &kp DE_V       &kp DE_Y
+                                                                    &lt NUM_L BSPC   &kp SPC        &kp ENTER        &mo NAV_L
             >;
         };
 
         num_layer {
-            label = "NUM";
+            label = "NUMBERS";
             bindings = <
-                &kp ESC    &kp ENTER  &kp UP         &kp DEL        &kp BSPC       &kp DE_COLN      &kp DE_7      &kp DE_8        &kp DE_9    &kp DE_UNDS 
-                &kp HOME   &kp LEFT   &kp DOWN       &kp RIGHT      &kp END        &kp DE_0         &kp DE_4      &kp DE_5        &kp DE_6    &kp DE_MINS 
-                &kp UNDO   &kp TAB    &kp INS        &kp PGUP       &kp PGDN       &kp DE_DOT       &kp DE_1      &kp DE_2        &kp DE_3    &kp DE_COMM
-                                                     _______        XXXXXXX        _______          _______
+                XXXXXXX       XXXXXXX      XXXXXXX        XXXXXXX    XXXXXXX       &kp DE_COLN      &kp DE_7      &kp DE_8        &kp DE_9    &kp DE_UNDS 
+                &kp LGUI      &kp LALT     &kp LSHFT      &kp LCTRL  XXXXXXX       &kp DE_0         &kp DE_4      &kp DE_5        &kp DE_6    &kp DE_MINS 
+                XXXXXXX       XXXXXXX      XXXXXXX        XXXXXXX    XXXXXXX       &kp DE_DOT       &kp DE_1      &kp DE_2        &kp DE_3    &kp DE_COMM
+                                                          _______    XXXXXXX       XXXXXXX          XXXXXXX
             >;
         };
 
-        sticky_num_layer {
-            label = "NUM S";
+        nav_layer {
+            label = "NAVIGATION";
             bindings = <
-                &kp ESC    &kp ENTER  &kp UP         &kp DEL        &kp BSPC       &kp DE_X         &kp DE_7      &kp DE_8        &kp DE_9    &kp DE_UNDS 
-                &kp HOME   &kp LEFT   &kp DOWN       &kp RIGHT      &kp END        &kp DE_0         &kp DE_4      &kp DE_5        &kp DE_6    &kp DE_SS 
-                &kp UNDO   &kp TAB    &kp INS        &kp PGUP       &kp PGDN       &kp DE_DOT       &kp DE_1      &kp DE_2        &kp DE_3    &kp DE_COMM
-                                                     &to BASE_L     XXXXXXX        _______          XXXXXXX
+                &kp ESC    &kp ENTER  &kp UP         &kp DEL        &kp BSPC       XXXXXXX       XXXXXXX      XXXXXXX        XXXXXXX    XXXXXXX 
+                &kp HOME   &kp LEFT   &kp DOWN       &kp RIGHT      &kp END        XXXXXXX       &kp LCTRL    &kp LSHFT      &kp LALT   &kp LGUI 
+                &kp UNDO   &kp TAB    &kp INS        &kp PGUP       &kp PGDN       XXXXXXX       XXXXXXX      XXXXXXX        XXXXXXX    XXXXXXX
+                                                     XXXXXXX        XXXXXXX        XXXXXXX       _______
             >;
         };
-
         xcv_layer {
             label = "XCV";
             bindings = <
@@ -237,22 +116,32 @@
         };
 
         sym_layer {
-            label = "SYM";
+            label = "SYMBOLS LEFT";
             bindings = <
-                &kp DE_CIRC &kp DE_AMPR &kp DE_QUOT &kp DE_DQUO &kp DE_EXLM &kp DE_EQL  &kp DE_LCBR &kp DE_RCBR &kp DE_SUP2 &kp DE_SUP3
-                &kp DE_BSLS &kp DE_SLSH &kp DE_LPRN &kp DE_RPRN &kp DE_QUES &kp DE_MINS &kp DE_LABK &kp DE_RABK &kp DE_AT   &kp DE_PERC
-                &kp DE_PIPE &kp DE_TILD &kp DE_LBRC &kp DE_RBRC &kp DE_HASH &kp DE_UNDS &kp DE_EURO &kp DE_DLR  &kp DE_DEG  &kp DE_MICR
-                                                    XXXXXXX     &kp DE_ASTR &kp DE_PLUS XXXXXXX
+                &kp DE_CIRC &kp DE_AMPR &kp DE_QUOT &kp DE_DQUO &kp DE_EXLM     XXXXXXX       XXXXXXX      _______        XXXXXXX    XXXXXXX
+                &kp DE_BSLS &kp DE_SLSH &kp DE_LPRN &kp DE_RPRN &kp DE_QUES     XXXXXXX       &kp LCTRL    XXXXXXX        &kp LALT   &kp LGUI 
+                &kp DE_PIPE &kp DE_TILD &kp DE_LBRC &kp DE_RBRC &kp DE_HASH     XXXXXXX       XXXXXXX      XXXXXXX        XXXXXXX    XXXXXXX
+                                                    XXXXXXX     &kp DE_ASTR     XXXXXXX       XXXXXXX      
+            >;
+        };
+
+        symr_layer {
+            label = "SYMBOLS RIGHT";
+            bindings = <
+                XXXXXXX       XXXXXXX      _______        XXXXXXX    XXXXXXX       &kp DE_EQL  &kp DE_LCBR &kp DE_RCBR &kp DE_SUP2 &kp DE_SUP3
+                &kp LGUI      &kp LALT     XXXXXXX        &kp LCTRL  XXXXXXX       &kp DE_MINS &kp DE_LABK &kp DE_RABK &kp DE_AT   &kp DE_PERC
+                XXXXXXX       XXXXXXX      XXXXXXX        XXXXXXX    XXXXXXX       &kp DE_UNDS &kp DE_EURO &kp DE_DLR  &kp DE_DEG  &kp DE_MICR
+                                                          XXXXXXX    XXXXXXX       &kp DE_PLUS XXXXXXX
             >;
         };
 
         adj_layer {
             label = "ADJUST";
             bindings = <
-                &bt BT_CLR      XXXXXXX          &kp LC(LG(DE_D)) &kp LC(LG(F4))     XXXXXXX        XXXXXXX          &kp F7        &kp F8          &kp F9       &kp F10   
-                XXXXXXX         &kp LC(LG(LEFT)) &kp LG(TAB)      &kp LC(LG(RIGHT))  XXXXXXX        XXXXXXX          &kp F4        &kp F5          &kp F6       &kp F11
-                &bt BT_SEL 0    &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3       &bt BT_SEL 4   XXXXXXX          &kp F1        &kp F2          &kp F3       &kp F12
-                                                                  &to BASE_L         XXXXXXX        XXXXXXX          XXXXXXX
+                &bt BT_CLR  XXXXXXX     XXXXXXX     XXXXXXX     XXXXXXX        XXXXXXX       &kp F7        &kp F8          &kp F9       &kp F10   
+                &kp LGUI    &kp LALT    &kp LSHFT   &kp LCTRL   XXXXXXX        XXXXXXX       &kp F4        &kp F5          &kp F6       &kp F11
+                XXXXXXX     XXXXXXX     XXXXXXX     XXXXXXX     XXXXXXX        XXXXXXX       &kp F1        &kp F2          &kp F3       &kp F12
+                                                    _______     XXXXXXX        XXXXXXX       _______
             >;
         };
     };
