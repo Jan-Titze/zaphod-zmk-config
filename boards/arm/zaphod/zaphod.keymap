@@ -40,7 +40,12 @@
 #define THUMB_4     33
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
-// &lt { quick_tap_ms = <200>; };
+
+&lt { 
+    quick_tap_ms = <200>; 
+    tapping-term-ms = <300>;
+    flavor = "hold-preferred";
+};
 
 &sk {
     release-after-ms = <2000>;
@@ -61,12 +66,12 @@
     behaviors {
     // https://zmk.dev/docs/behaviors/hold-tap#positional-hold-tap-and-hold-trigger-key-positions 
     // require-prior-idle-md = modifier kommen nur, wenn vorher eine kurze Pause ist.
-    
+
         hml: positional_home_row_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred"; // 'hold-preferred', 'balanced', 'tap-preferred'
-            tapping-term-ms = <400>;
+            flavor = "balanced"; // 'hold-preferred', 'balanced', 'tap-preferred'
+            tapping-term-ms = <300>;
             quick-tap-ms = <200>;
             require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
@@ -75,8 +80,8 @@
         hmr: positional_home_row_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred"; // 'hold-preferred', 'balanced', 'tap-preferred'
-            tapping-term-ms = <400>;
+            flavor = "balanced"; // 'hold-preferred', 'balanced', 'tap-preferred'
+            tapping-term-ms = <300>;
             quick-tap-ms = <200>;
             require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
@@ -90,10 +95,10 @@
         default_layer {
             label = "BASE";
             bindings = <
-                &kp DE_B        &kp DE_U        &hml SYMR_L DE_DOT  &kp DE_COMM      &kp DE_UDIA    &kp DE_P         &kp DE_C        &lt SYML_L DE_L  &kp DE_M        &kp DE_F
+                &kp DE_B        &kp DE_U        &lt SYMR_L DE_DOT   &kp DE_COMM      &kp DE_UDIA    &kp DE_P         &kp DE_C        &lt SYML_L DE_L  &kp DE_M        &kp DE_F
                 &hml LGUI  DE_H &hml LALT DE_I  &hml LSHFT DE_E     &hml LCTRL DE_A  &kp DE_O       &kp DE_D         &hmr LCTRL DE_T &hmr LSHFT DE_R  &hmr LALT DE_N  &hmr LGUI DE_S
                 &lt XCV_L DE_K  &kp DE_Y        &kp DE_ODIA         &kp DE_ADIA      &kp DE_Q       &kp DE_J         &kp DE_G        &kp DE_W         &kp DE_V        &kp DE_Z
-                                                                    &hml NUM_L BSPC  &kp SPC        &kp ENTER        &mo NAV_L
+                                                                    &lt NUM_L BSPC   &kp SPC        &kp ENTER        &mo NAV_L
             >;
         };
 
