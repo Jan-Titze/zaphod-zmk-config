@@ -118,7 +118,7 @@
                 &kp ESC    &kp ENTER  &kp UP         &kp DEL        &kp BSPC       XXXXXXX       XXXXXXX      XXXXXXX        XXXXXXX    XXXXXXX 
                 &kp HOME   &kp LEFT   &kp DOWN       &kp RIGHT      &kp END        XXXXXXX       &kp LCTRL    &kp LSHFT      &kp LALT   &kp LGUI 
                 &kp UNDO   &kp TAB    &kp INS        &kp PGUP       &kp PGDN       XXXXXXX       XXXXXXX      XXXXXXX        XXXXXXX    XXXXXXX
-                                                     XXXXXXX        XXXXXXX        XXXXXXX       _______
+                                                     &mo ADJ_L      XXXXXXX        XXXXXXX       _______
             >;
         };
 
@@ -145,10 +145,10 @@
         symr_layer {
             label = "SYMBOLS RIGHT";
             bindings = <
-                XXXXXXX       XXXXXXX      _______        XXXXXXX    XXXXXXX       &kp DE_EQL  &kp DE_LCBR &kp DE_RCBR &kp DE_SUP2 &kp DE_SUP3
-                &kp LGUI      &kp LALT     XXXXXXX        &kp LCTRL  XXXXXXX       &kp DE_MINS &kp DE_LABK &kp DE_RABK &kp DE_AT   &kp DE_PERC
-                XXXXXXX       XXXXXXX      XXXXXXX        XXXXXXX    XXXXXXX       &kp DE_UNDS &kp DE_EURO &kp DE_DLR  &kp DE_DEG  &kp DE_MICR
-                                                          XXXXXXX    XXXXXXX       &kp DE_PLUS XXXXXXX
+                XXXXXXX       XXXXXXX      _______        XXXXXXX    XXXXXXX       &kp DE_EQL   &kp DE_LCBR  &kp DE_RCBR  &kp DE_SUP2  &kp DE_SUP3
+                &kp LGUI      &kp LALT     XXXXXXX        &kp LCTRL  XXXXXXX       &kp DE_MINS  &kp DE_LABK  &kp DE_RABK  &kp DE_AT    &kp DE_PERC
+                XXXXXXX       XXXXXXX      XXXXXXX        XXXXXXX    XXXXXXX       &kp DE_UNDS  &kp DE_EURO  &kp DE_DLR   &kp DE_DEG   &kp DE_MICR
+                                                          XXXXXXX    XXXXXXX       &kp DE_PLUS  XXXXXXX
             >;
         };
 
